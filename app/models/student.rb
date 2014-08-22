@@ -9,4 +9,18 @@ class Student < ActiveRecord::Base
   def not_done
     Lesson.all - self.lessons
   end
+
+  def next
+    last_lesson = self.lessons.order(:number).last
+    ordered_lessons = Lesson.all.order(:number)
+    ordered_lessons[Lesson.all.order(:number).find_index(last_lesson) + 1]
+  end
+
+  def pairs
+    potentials = []
+    Student.all.each do |student|
+      potentials << student if student.next == self.next unless student == self
+    end
+    potentials
+  end
 end

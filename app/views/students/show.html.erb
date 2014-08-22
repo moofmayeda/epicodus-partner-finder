@@ -13,6 +13,11 @@
 </form>
 
 <h2>Today's potential pairs:</h2>
+  <ul>
+    <% @student.pairs.each do |student| %>
+      <li><a href="/<%= student.name %>"><%= student.name %></a></li>
+    <% end %>
+  </ul>
 
 <h3>Lessons Remaining: </h3>
 
