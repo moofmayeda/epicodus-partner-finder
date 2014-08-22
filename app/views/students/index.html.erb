@@ -7,3 +7,11 @@
     <li><a href="/<%= student.name %>"><%= student.name %></a></li>
   <% end %>
 </ul>
+
+<%= render('layouts/errors', :object => @student) %>
+
+<h3>Add a student</h3>
+<form action="/students" method="post">
+  <%= render('form') %>
+  <button>Add</button>
+</form>
