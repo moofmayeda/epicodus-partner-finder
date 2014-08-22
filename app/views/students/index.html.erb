@@ -1,0 +1,9 @@
+<h1>Enter the lesson you completed yesterday</h2>
+
+<h3>Students:</h3>
+
+<ul>
+  <% @students.each do |student| %>
+    <li><a href="/<%= student.name %>"><%= student.name %></a></li>
+  <% end %>
+</ul>
