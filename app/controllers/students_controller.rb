@@ -16,4 +16,8 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+    @student = Student.find_by name: params[:name]
+    render('students/show.html.erb')
+  end
 end

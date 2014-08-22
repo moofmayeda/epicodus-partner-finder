@@ -1,0 +1,15 @@
+<h1><%= @student.name %></h2>
+
+<h2>Today's potential pairs:</h2>
+
+<h3>Lessons Remaining: </h3>
+
+<h3>Lessons Completed: </h3>
+
+<ul>
+  <% @student.completions.each do |completion| %>
+    <li><%= completion.lesson.number %>. <%= completion.lesson.name %>, completed on <%= completion.date %></li>
+  <% end %>
+</ul>
+
+<p><a href="/">Return to Roster</a></p>
