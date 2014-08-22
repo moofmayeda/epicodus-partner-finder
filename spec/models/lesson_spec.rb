@@ -32,4 +32,15 @@ describe Lesson do
       expect(lesson2.pairs).to eq [new_student2, new_student1]
     end
   end
+
+  describe "incomplete_students" do
+    it "returns all the students who haven't taken the lesson" do
+      new_student1 = Student.create(name: "moof")
+      new_student2 = Student.create(name: "mark")
+      new_student3 = Student.create(name: "blnkt")
+      lesson1 = Lesson.create(name: "one", number: 1)
+      new_student1.completions.create(lesson_id: lesson1.id, date: "2014-08-21")
+      expect(lesson1.incomplete_students).to eq [new_student3, new_student2]
+    end
+  end
 end

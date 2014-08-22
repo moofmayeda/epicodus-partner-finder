@@ -17,4 +17,8 @@ class Lesson < ActiveRecord::Base
     end
     potential
   end
+
+  def incomplete_students
+    Student.all - self.students
+  end
 end

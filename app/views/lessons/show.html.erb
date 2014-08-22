@@ -10,13 +10,17 @@
 </ul>
 
 <h3>Students who still need to complete this lesson: </h3>
+  <ul>
+    <% @lesson.incomplete_students.each do |student| %>
+      <li><a href="/<%= student.name %>"><%= student.name %></a></li>
+    <% end %>
+  </ul>
 
 <h3>Students who have already completed this lesson: </h3>
 
 <ul>
   <% @lesson.completions.each do |completion| %>
-    <li><%= completion.student.name %>,
-      completed on <%= completion.date %></li>
+    <li><%= completion.student.name %>   (<%= completion.date %>)</li>
   <% end %>
 </ul>
 
