@@ -5,4 +5,8 @@ class Lesson < ActiveRecord::Base
   has_many :students, through: :completions
 
   default_scope { order(:number) }
+
+  def date(student)
+    student.completions.where(lesson_id: self.id).first.date
+  end
 end

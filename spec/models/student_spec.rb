@@ -32,6 +32,18 @@ describe Student do
       new_student.completions.create(lesson_id: lesson3.id, date: "2014-08-22")
       expect(new_student.next).to eq lesson4
     end
+
+    it "assumes the student completed the next lesson if their last update was between 24 and 48 hours ago" do
+      new_student = Student.create(name: "moof")
+      lesson1 = Lesson.create(name: "one", number: 1)
+      lesson2 = Lesson.create(name: "two", number: 2)
+      lesson3 = Lesson.create(name: "three", number: 3)
+      lesson4 = Lesson.create(name: "four", number: 4)
+      new_student.completions.create(lesson_id: lesson1.id, date: "2014-08-20", created_at: "2014-08-18 01:00:00")
+      new_student.completions.create(lesson_id: lesson2.id, date: "2014-08-21", created_at: "2014-08-21 01:00:00")
+      p new_student.completions
+      expect(new_student.next).to eq lesson4
+    end
   end
 
   describe "pairs" do

@@ -19,6 +19,14 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find_by name: params[:name]
     @completion = Completion.new
+    @lessons = Lesson.all
+    @lessons_dates = @lessons.map do |lesson|
+      if @student.lessons.include?(lesson)
+        lesson.date(@student)
+      else
+        ""
+      end
+    end
     render('students/show.html.erb')
   end
 
