@@ -6,4 +6,7 @@ class Student < ActiveRecord::Base
 
   default_scope { order(:name) }
 
+  def not_done
+    Lesson.all - self.lessons
+  end
 end
