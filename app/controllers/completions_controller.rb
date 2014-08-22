@@ -1,14 +1,12 @@
 class CompletionsController < ApplicationController
   def create
-    @students = Student.all
     @student = Student.find(params[:id])
     @completion = @student.completions.new(params[:completion])
     if @completion.save
       flash[:notice] = "Lesson marked as complete."
-      stop
-      redirect_to("/")
+      redirect_to("/#{@student.name}")
     else
-      render('students/index.html.erb')
+      render('students/show.html.erb')
     end
   end
 end

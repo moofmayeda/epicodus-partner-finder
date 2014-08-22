@@ -1,5 +1,17 @@
 <h1><%= @student.name %></h2>
 
+<h2>Enter your latest completed lesson:</h2>
+<%= render('layouts/errors', :object => @completion) %>
+<form id="new_completion" action="/completions/<%= @student.id %>" method="post">
+  <%= render('./completions/form') %>
+  <select form="new_completion" name="completion[lesson_id]">
+    <% @student.not_done.each do |lesson| %>
+      <option value="<%= lesson.id %>"><%= lesson.name %></option>
+    <% end %>
+  </select>
+  <button>Mark completed</button>
+</form>
+
 <h2>Today's potential pairs:</h2>
 
 <h3>Lessons Remaining: </h3>
