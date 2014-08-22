@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   match('/students', {:via => :post, :to => 'students#create'})
   match('/students/:id', {:via => [:patch, :put], :to => 'students#update'})
   match('/students/:id', {:via => :delete, :to => 'students#destroy'})
+  match('/lessons/:id', {:via => :get, :to => 'lessons#show'})
+  match('/lessons/:id', {:via => [:patch, :put], :to => 'lessons#update'})
+  match('/lessons/:id', {:via => :delete, :to => 'lessons#destroy'})
   match('/:name', {:via => :get, :to => 'students#show'})
 end
