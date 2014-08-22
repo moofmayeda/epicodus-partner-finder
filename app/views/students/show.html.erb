@@ -16,6 +16,12 @@
 
 <h3>Lessons Remaining: </h3>
 
+<ul>
+  <% @student.not_done.each do |lesson| %>
+    <li><%= lesson.number %>. <%= lesson.name %></li>
+  <% end %>
+</ul>
+
 <h3>Lessons Completed: </h3>
 
 <ul>
