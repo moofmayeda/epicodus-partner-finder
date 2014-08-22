@@ -20,4 +20,14 @@ class StudentsController < ApplicationController
     @student = Student.find_by name: params[:name]
     render('students/show.html.erb')
   end
+
+  def update
+    @student = Student.find(params[:id])
+    if @student.update(params[:student])
+      flash[:notice] = "Student updated!"
+      redirect_to("/#{@student.name}")
+    else
+      render('students/show.html.erb')
+    end
+  end
 end
