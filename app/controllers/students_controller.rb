@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
     @student = Student.new
+    @completion = Completion.new
     render('students/index.html.erb')
   end
 

@@ -2,9 +2,21 @@
 
 <h3>Students:</h3>
 
+<%= render('layouts/errors', :object => @completion) %>
+
 <ul>
   <% @students.each do |student| %>
-    <li><a href="/<%= student.name %>"><%= student.name %></a></li>
+    <li><a href="/<%= student.name %>"><%= student.name %></a>
+      <form id="new_completion" action="/completions/<%= student.id %>" method="post">
+        <%= render('./completions/form') %>
+        <select form="new_completion" name="completion[lesson_id]">
+          <% student.not_done.each do |lesson| %>
+            <option value="<%= lesson.id %>"><%= lesson.name %></option>
+          <% end %>
+        </select>
+        <button>Mark completed</button>
+      </form>
+    </li>
   <% end %>
 </ul>
 
