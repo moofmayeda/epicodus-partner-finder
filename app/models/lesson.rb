@@ -9,4 +9,12 @@ class Lesson < ActiveRecord::Base
   def date(student)
     student.completions.where(lesson_id: self.id).first.date
   end
+
+  def pairs
+    potential = []
+    Student.all.each do |student|
+      potential << student if student.next == self
+    end
+    potential
+  end
 end

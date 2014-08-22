@@ -2,7 +2,12 @@
 
 <h2>Lesson Number: <%= @lesson.number %></h2>
 
-<h2>Today's potential pairs:</h2>
+<h2>Today's potential pairs: <%= @lesson.pairs.count %></h2>
+<ul>
+  <% @lesson.pairs.each do |student| %>
+    <li><a href="/<%= student.name %>"><%= student.name %></a></li>
+  <% end %>
+</ul>
 
 <h3>Students who still need to complete this lesson: </h3>
 
