@@ -27,6 +27,13 @@ class StudentsController < ApplicationController
         ""
       end
     end
+    @selected = @student.not_done.map do |lesson|
+      if lesson == @student.next
+        "selected"
+      else
+        ""
+      end
+    end
     render('students/show.html.erb')
   end
 

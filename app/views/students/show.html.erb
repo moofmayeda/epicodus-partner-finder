@@ -5,12 +5,14 @@
 <form id="new_completion" action="/completions/<%= @student.id %>" method="post">
   <%= render('./completions/form') %>
   <select form="new_completion" name="completion[lesson_id]">
-    <% @student.not_done.each do |lesson| %>
-      <option value="<%= lesson.id %>"><%= lesson.name %></option>
+    <% @student.not_done.each_with_index do |lesson, index| %>
+      <option value="<%= lesson.id %>" <%= @selected[index] %>><%= lesson.name %></option>
     <% end %>
   </select>
   <button>Mark completed</button>
 </form>
+
+<h2>Next lesson: <%= @student.next.name %></h2>
 
 <h2>Today's potential pairs: <%= @student.pairs.count %></h2>
   <ul>
