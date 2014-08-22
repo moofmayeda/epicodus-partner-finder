@@ -30,4 +30,11 @@ class StudentsController < ApplicationController
       render('students/show.html.erb')
     end
   end
+
+  def destroy
+    @student = Student.find(params[:id])
+    @student.completions.destroy_all
+    @student.destroy
+    redirect_to("/")
+  end
 end
