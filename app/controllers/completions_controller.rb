@@ -9,4 +9,11 @@ class CompletionsController < ApplicationController
       render('students/show.html.erb')
     end
   end
+
+  def destroy
+    @completion = Completion.find(params[:id])
+    @student = Student.find(@completion.student_id)
+    @completion.destroy
+    redirect_to("/#{@student.name}")
+  end
 end

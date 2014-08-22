@@ -31,7 +31,13 @@
       <% @lessons.each_with_index do |lesson, index| %>
         <tr>
           <td><%= lesson.name %></td>
-          <td><%= @lessons_dates[index] %></td>
+          <td><%= @lessons_dates[index] %>
+            <% if @student.lessons.include?(lesson) %>
+              <a href = "/completions/<%= @student.completions.where(lesson_id: lesson.id).first.id %>"
+                data-confirm="Are you sure you want to mark this lesson as incomplete?"
+                data-method="delete" rel= "nofollow" class= "mark_incomplete">Mark incomplete</a>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
