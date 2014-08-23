@@ -1,17 +1,19 @@
-<h1>Lessons</h2>
+<div class="container">
+  <div class="page-header">
+    <h1>Lessons</h1>
+  </div>
 
-<ol>
-  <% @lessons.each do |lesson| %>
-    <li><a href="/lessons/<%= lesson.id %>"><%= lesson.name %> (lesson #<%= lesson.number %>)</a></li>
-  <% end %>
-</ol>
+  <ol>
+    <% @lessons.each do |lesson| %>
+      <li><a href="/lessons/<%= lesson.id %>"><%= lesson.name %> (lesson <%= lesson.number %>)</a></li>
+    <% end %>
+  </ol>
 
-<%= render('layouts/errors', :object => @lesson) %>
+  <%= render('layouts/errors', :object => @lesson) %>
 
-<h3>Create a new lesson</h3>
-<form action="/lessons" method="post">
-  <%= render('form') %>
-  <button>Create</button>
-</form>
-
-<p><a href="/">Back to roster</a></p>
+  <h4>Create a new lesson</h4>
+  <form action="/lessons" method="post">
+    <%= render('form') %>
+    <button class="btn btn-primary">Create</button>
+  </form>
+</div>

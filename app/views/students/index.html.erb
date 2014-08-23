@@ -1,19 +1,19 @@
-<h1>Student Sign-in</h1>
+<div class="container">
+  <div class="page-header">
+    <h1>Epicodus Students <small>sign-in</small></h1>
+  </div>
 
-<h3>Students:</h3>
+  <div class="text-center">
+    <% @students.each do |student| %>
+      <p><a href="/<%= student.name %>"><%= student.name %></a></p>
+    <% end %>
+  </div>
 
-<ul>
-  <% @students.each do |student| %>
-    <li><a href="/<%= student.name %>"><%= student.name %></a></li>
-  <% end %>
-</ul>
+  <%= render('layouts/errors', :object => @student) %>
 
-<%= render('layouts/errors', :object => @student) %>
-
-<h3>Add a student</h3>
-<form action="/students" method="post">
-  <%= render('form') %>
-  <button>Add</button>
-</form>
-
-<p><a href="/lessons">Lessons page</a></p>
+  <h4>Add a student</h4>
+  <form action="/students" method="post">
+    <%= render('form') %>
+    <button class="btn btn-primary">Add</button>
+  </form>
+</div>
